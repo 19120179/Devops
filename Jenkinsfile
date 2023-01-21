@@ -8,6 +8,12 @@ node {
 		app = docker.build("19120179/devops_demo")
 	}
 
+	stage('Test') {
+		app.inside {
+			sh 'make check'
+		}
+	}
+
 	stage('Push') {
 		docker.withRegistry("https://registry.hub.docker.com", "Docker") {
 			app.push("${env.BUILD_ID}") // push images with new tag to docker hub
@@ -25,9 +31,5 @@ node {
         }
 	}
 	
-	stage('Test') {
-		app.inside {
-            sh "echo 'passed'"
-		}
-	}
+	
 }
