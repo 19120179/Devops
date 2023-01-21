@@ -10,7 +10,7 @@ node {
 
 	stage('Test') {
 		app.inside {
-			sh 'make check'
+			sh "docker exec --tty node-server curl http://localhost:8000/test"
 		}
 	}
 
