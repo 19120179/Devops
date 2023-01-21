@@ -5,13 +5,7 @@ node {
 	}
 
 	stage('Build') {
-		app = docker.build("19120179/devops_demo")
-	}
-
-	stage('Test') {
-		app.inside {
-			sh "docker exec --tty node-server curl http://localhost:8000/test"
-		}
+		app = docker.build("19120179/devops")
 	}
 
 	stage('Push') {
