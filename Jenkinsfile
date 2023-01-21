@@ -5,7 +5,7 @@ node {
 	}
 
 	stage('Build') {
-		app = docker.build("19120064/devops_demo")
+		app = docker.build("19120179/devops_demo")
 	}
 
 	stage('Push') {
